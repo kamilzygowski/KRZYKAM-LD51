@@ -5,3 +5,16 @@
 
 @import 'variables';
 @import 'scaffolding';
+
+.instructionsButton{
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  background: url('@/images/questionmark.png');
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+  &:hover{
+    opacity: 0.3;
+  }
+}
