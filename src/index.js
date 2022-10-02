@@ -1,5 +1,5 @@
 // Test import of a JavaScript module
-import { title, canvas } from '@/js/main'
+import { title, canvas, canvas2 } from '@/js/main'
 import '@/js/main'
 import _quesitonMark from '@/images/questionmark.png'
 import '@/styles/index.scss'
@@ -19,5 +19,5 @@ restartButton.className = "restart"
 startButton.className = "startButton"*/
 
 const app = document.querySelector('#root')
-app.append(heading, canvas, instructionButton, restartButton)
+app.append(heading, canvas, canvas2, instructionButton, restartButton)
 
