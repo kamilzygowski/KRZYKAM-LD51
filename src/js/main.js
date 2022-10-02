@@ -7,7 +7,11 @@ export const title =
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
-const music = [3, 3, 3, 3, 6, 7, 4, 5, 3]
+const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8]
+const musicArctic = [6]
+const musicWutang = [6]
+const musicEminem = [6]
+const musicBiggy = [6.5,6.5,6.5,6.2,6.5,8]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 2,9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -35,6 +39,9 @@ const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13,12, 12, 12, 12, 12, 12, 12, 11,9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
 ]
 
+const drawingBarsInterval = 1000/80
+const startingMusicInterval = 500
+let musicBox = [ musicWutang, musicMozart, musicBiggy,  musicEminem, musicArctic]
 const barIntervalMultiplier = 100
 const SQM_SIZE = 32;
 const player = new Player(768 + 6, 352 - 6, 42, 42, SQM_SIZE + 1, 3, playerImg)
@@ -50,6 +57,8 @@ const ctx2 = canvas2.getContext('2d');
 ctx2.fillStyle = "#121215";
 ctx2.fillRect(-300, 0, canvas2.width, canvas2.height);
 
+let spawnBarsInterval
+let drawBarsInterval
 
 export const gameLoop = setInterval(() => {
     ctx.save()
@@ -70,40 +79,53 @@ export const gameLoop = setInterval(() => {
 }, 1000 / 10)
 
 let musicIndex = -1
-let musicInterval = 500
+let musicInterval = startingMusicInterval
 let currentBars = []
+let musicBoxIndex = 0
 
 function spawnbars() {
     musicIndex+=1
-    musicInterval = music[musicIndex]; 
-    if(musicInterval != null){
+    musicInterval = musicBox[musicBoxIndex][musicIndex]; 
+    if(musicInterval != null && !musicFinished){
         musicInterval = musicInterval*barIntervalMultiplier;
-        console.log(musicInterval)
-        let barTest = new Bar(0,0,200,50)
-        currentBars.push(barTest)
-    };
+        currentBars.push(new Bar(0,0,200,50))
+    } else if (musicFinished){
+        musicBoxIndex = randomSoundtrack
+        musicIndex = -1
+        musicInterval = startingMusicInterval
+    }
     clearInterval(spawnBarsInterval);
     spawnBarsInterval = setInterval(spawnbars, musicInterval);
 }
-let spawnBarsInterval = setInterval(spawnbars, musicInterval)
 
-export const drawbars = setInterval(()=> {
+function drawbars(){
     ctx2.save()
     ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
     ctx2.translate(0, -100)
-
-    currentBars.forEach(bar =>{
+    ctx2.beginPath();
+    ctx2.fillStyle = "green"
+    ctx2.rect(0,700,200,50)
+    ctx2.fill()
+    //console.log(currentBars)
+    currentBars.forEach((bar, index) =>{
         bar.drawBar(ctx2, canvas2.height)
         bar.move(4)
     });
-  
-    ctx2.restore()
 
-},  1000 / 120)
+    ctx2.restore()
+}
 
 
 // Old moving
 /*let mapButtons = {};
+=======
+     
+    ctx2.restore()
+}
+   
+// Moving
+let mapButtons = {};
+>>>>>>> Stashed changes
 onkeydown = onkeyup = function (e) {
     e = e || event; // to deal with IE
     mapButtons[e.keyCode] = e.type == 'keydown';
@@ -149,25 +171,41 @@ const soundsAlreadyPlayed = [];
 // 1 - Wutang ; 2 - Mozart ; 3 - Biggy ; 4 - Eminem ; 5 - Arctic
 const startButton = document.querySelector(".startButton")
 startButton.addEventListener('click', ()=> {
-    playMusic()
+    document.querySelector(".vinylRewind").style.display = "block";
+    vinylRewind.play()
+    document.querySelector("#vinyl").onended = () => {
+        playMusic()
+    }
+  
     
     //document.querySelector("#music1").play()
     document.querySelector(".notStartedGame").style.display = "none"
     startButton.style.display = "none"
 })
 
+let randomSoundtrack
+let musicFinished = false
 function playMusic(){
     document.querySelector(".vinylRewind").style.display = "none";
-    let randomSoundtrack = Math.floor(Math.random() * (musicSoundtracks.length - 1))
+    randomSoundtrack = Math.floor(Math.random() * (musicSoundtracks.length - 1))
+
     if(soundsAlreadyPlayed.includes(randomSoundtrack)){
         playMusic();
         return;
     }
+    musicBoxIndex = randomSoundtrack
+    musicFinished = false
+    clearInterval(drawBarsInterval);
+    clearInterval(spawnBarsInterval);
+    spawnBarsInterval = setInterval(spawnbars, musicInterval)
+    drawBarsInterval = setInterval(drawbars,drawingBarsInterval)
+
     soundsAlreadyPlayed.push(randomSoundtrack)
     console.log(randomSoundtrack)
     document.querySelector(musicSoundtracks[randomSoundtrack]).play()
     document.querySelector(musicSoundtracks[randomSoundtrack]).onended = () => {
         document.querySelector(".vinylRewind").style.display = "block";
+        musicFinished = true
         vinylRewind.play()
         vinylRewind.onended = () => playMusic()
     }
