@@ -120,9 +120,30 @@ onkeydown = onkeyup = function (e) {
     }
 }
 
+const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5"]
+const vinylRewind = document.querySelector("#vinyl");
+const soundsAlreadyPlayed = [];
+// 1 - Wutang ; 2 - Mozart ; 3 - Biggy ; 4 - Eminem ; 5 - Arctic
 const startButton = document.querySelector(".startButton")
 startButton.addEventListener('click', ()=> {
-    document.querySelector("#music1").play()
+    playMusic()
+    
+    //document.querySelector("#music1").play()
     document.querySelector(".notStartedGame").style.display = "none"
     startButton.style.display = "none"
 })
+
+function playMusic(){
+    let randomSoundtrack = Math.floor(Math.random() * (musicSoundtracks.length - 1))
+    if(soundsAlreadyPlayed.includes(randomSoundtrack)){
+        playMusic();
+        return;
+    }
+    soundsAlreadyPlayed.push(randomSoundtrack)
+    console.log(randomSoundtrack)
+    document.querySelector(musicSoundtracks[4]).play()
+    document.querySelector(musicSoundtracks[4]).onended = () => {
+        vinylRewind.play()
+        vinylRewind.onended = () => playMusic()
+    }
+}

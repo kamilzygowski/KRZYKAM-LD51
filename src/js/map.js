@@ -54,8 +54,8 @@ export const downTop = new Image()
 downTop.src = "https://i.postimg.cc/4453FQdX/dTop1.png"//dTop
 
 export const drawMap = (map, ctx, SQM_SIZE) => {
-    ctx.beginPath();
-ctx.moveTo(20, 20);
+   /*ctx.beginPath();
+    ctx.lineTo(0,0)*/
     map.forEach((element, index) => {
         element.forEach((sqm, id) => {
             if (sqm === 0) {
@@ -107,11 +107,11 @@ ctx.moveTo(20, 20);
             else if (sqm === 16) {
                 ctx.drawImage(downTop, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
             }
-          
-            /*ctx.fillStyle = "red"
+            /*console.log(SQM_SIZE * id, SQM_SIZE * index)
+            
             ctx.lineTo(SQM_SIZE * id, SQM_SIZE * index)
-            ctx.stroke()
-            console.log(SQM_SIZE * id, SQM_SIZE * index)*/
+            ctx.strokeStyle = "red"
+            ctx.stroke()*/
         })
     })
 }
