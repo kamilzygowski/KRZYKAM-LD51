@@ -15,5 +15,9 @@ instructionButton.className = "instructionsButton"
 const restartButton = document.createElement('div')
 restartButton.className = "restart"
 
+/*const startButton = document.createElement('div')
+startButton.className = "startButton"*/
+
 const app = document.querySelector('#root')
 app.append(heading, canvas, instructionButton, restartButton)
+
