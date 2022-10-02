@@ -38,13 +38,13 @@ const map = [
 const barIntervalMultiplier = 100
 const SQM_SIZE = 32;
 const player = new Player(384, 352, 26, 26, SQM_SIZE)
-canvas.width = 1403, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8;
+canvas.width = 1403;
 canvas.height = 768;
 const ctx = canvas.getContext('2d');
 ctx.fillStyle = "#121212";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-canvas2.width = 200, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8;
+canvas2.width = 200;
 canvas2.height = 700;
 const ctx2 = canvas2.getContext('2d');
 ctx2.fillStyle = "#121215";
@@ -56,8 +56,6 @@ export const gameLoop = setInterval(() => {
    
     ctx.translate(-player.x, -canvas.height/2)
     ctx.translate(canvas.width / 2, canvas.height / 2)
-
-    ctx.translate(-100, -100)
  
     drawMap(map, ctx, SQM_SIZE);
 
