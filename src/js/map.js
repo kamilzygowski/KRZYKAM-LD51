@@ -62,9 +62,25 @@ playerImg.src = "https://i.postimg.cc/LsWMXx8t/player.png"
 export const playerImg2 = new Image();
 playerImg2.src = "https://i.postimg.cc/432h3RcW/player2.png"
 
-export const drawMap = (map, ctx, SQM_SIZE) => {
-   /*ctx.beginPath();
-    ctx.lineTo(0,0)*/
+export const playerLImg = new Image();
+playerLImg.src = "https://i.postimg.cc/xdpBLnNB/playerL.png"
+
+export const playerL2Img = new Image();
+playerL2Img.src = "https://i.postimg.cc/T25vqL90/player2L.png"
+
+export const detectCollision = (object1, object2) => {
+    let dx = object1.x - object2.x;
+    let dy = object1.y - object2.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < object1.width / 2 + object2.width / 2) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+export const drawMap = (map, ctx, SQM_SIZE, player) => {
     map.forEach((element, index) => {
         element.forEach((sqm, id) => {
             if (sqm === 0) {
@@ -94,6 +110,7 @@ export const drawMap = (map, ctx, SQM_SIZE) => {
                 ctx.drawImage(grassRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             } else if (sqm === 9) {
                 ctx.drawImage(water, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+
             }
             else if (sqm === 10) {
                 ctx.drawImage(downBottomLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
@@ -116,11 +133,6 @@ export const drawMap = (map, ctx, SQM_SIZE) => {
             else if (sqm === 16) {
                 ctx.drawImage(downTop, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
-            /*console.log(SQM_SIZE * id, SQM_SIZE * index)
-            
-            ctx.lineTo(SQM_SIZE * id, SQM_SIZE * index)
-            ctx.strokeStyle = "red"
-            ctx.stroke()*/
         })
     })
 }

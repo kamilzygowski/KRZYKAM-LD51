@@ -14,6 +14,6 @@ export class Bar {
     }
 
     move(speed) {
-      this.y += speed
+        this.y += speed
     }
 }
