@@ -1,4 +1,4 @@
-import tile from '@/images/trawka.png'
+/*import tile from '@/images/trawka.png'
 import gTop from '@/images/top.png'
 import gTopLeft from '@/images/topLeft.png'
 import gTopRight from '@/images/topRight.png'
@@ -15,62 +15,52 @@ import dBottom1 from '@/images/dBottom1.png'
 import dBottom2 from '@/images/dBottom2.png'
 import dTopLeft from '@/images/dTopLeft.png'
 import dTopRight from '@/images/dTopRight.png'
-import dTop from '@/images/dTop1.png'
-
-
-export const testTile = new Image();
-testTile.src = tile;
+import dTop from '@/images/dTop1.png'*/
 
 export const grassTop = new Image();
-grassTop.src = gTop;
+grassTop.src = "https://i.postimg.cc/dQ4q9QH1/top.png"//gTop;
 export const grassTopLeft = new Image();
-grassTopLeft.src = gTopLeft;
+grassTopLeft.src = "https://i.postimg.cc/tJSpRDZP/topLeft.png"//gTopLeft;
 export const grassTopRight = new Image();
-grassTopRight.src = gTopRight;
+grassTopRight.src = "https://i.postimg.cc/9fZmPGK5/topright.png"//gTopRight;
 export const grassRight = new Image();
-grassRight.src = gRight;
+grassRight.src = "https://i.postimg.cc/j2dRrB5t/right.png"//gRight;
 export const grassBottomRight = new Image();
-grassBottomRight.src = gBottomRight;
+grassBottomRight.src = "https://i.postimg.cc/tTGg8rW4/bottom-Right.png"//gBottomRight;
 export const grassBottom = new Image();
-grassBottom.src = gBottom;
+grassBottom.src = "https://i.postimg.cc/DwD0Pfzs/bottom.png"//gBottom;
 export const grassBottomLeft = new Image();
-grassBottomLeft.src = gBottomLeft;
+grassBottomLeft.src = "https://i.postimg.cc/90WQQrx3/bottom-Left.png"//gBottomLeft;
 export const grassLeft = new Image();
-grassLeft.src = gLeft;
+grassLeft.src = "https://i.postimg.cc/Y97pdvB4/left.png"//gLeft;
 export const grassCenter = new Image();
-grassCenter.src = gCenter;
+grassCenter.src = "https://i.postimg.cc/63VQKdfL/center.png"//gCenter;
 export const water = new Image();
-water.src = _water;
+water.src = "https://i.postimg.cc/Kz5mwmm0/water.png"//_water;
 
 export const downBottomLeft = new Image();
-downBottomLeft.src = dBottomLeft
+downBottomLeft.src = "https://i.postimg.cc/KjJvkxV1/d-Bottom-Left.png"//dBottomLeft
 export const downBottomRight = new Image();
-downBottomRight.src = dBottomRight
+downBottomRight.src = "https://i.postimg.cc/fTqRMWmF/d-Bottom-Right.png"//dBottomRight
 export const downBottom1 = new Image();
-downBottom1.src = dBottom1
+downBottom1.src = "https://i.postimg.cc/439dLCK0/dBottom1.png"//dBottom1
 export const downBottom2 = new Image();
-downBottom2.src = dBottom2
+downBottom2.src = "https://i.postimg.cc/qMv7f6hy/dBottom2.png"//dBottom2
 export const downTopLeft = new Image()
-downTopLeft.src = dTopLeft
+downTopLeft.src = "https://i.postimg.cc/GmZ3sMMx/dTopLeft.png"//dTopLeft
 export const downTopRight = new Image()
-downTopRight.src = dTopRight
+downTopRight.src = "https://i.postimg.cc/jSWd2Vhj/d-Top-Right.png"//dTopRight
 export const downTop = new Image()
-downTop.src = dTop
+downTop.src = "https://i.postimg.cc/4453FQdX/dTop1.png"//dTop
 
 export const drawMap = (map, ctx, SQM_SIZE) => {
     map.forEach((element, index) => {
         element.forEach((sqm, id) => {
             if (sqm === 0) {
-                ctx.fillStyle = "green"
                 ctx.drawImage(grassTopLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 1) {
-                ctx.fillStyle = "blue"
-                //ctx.fillRect(SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
                 ctx.drawImage(grassTop, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
-                /*if (detectCollision(player, { x: SQM_SIZE * id + SQM_SIZE / 2, y: SQM_SIZE * index + SQM_SIZE / 2, width: SQM_SIZE, height: SQM_SIZE })) {
-                    console.log('collision')
-                }*/
             } else if (sqm === 2) {
                 ctx.drawImage(grassTopRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
             }

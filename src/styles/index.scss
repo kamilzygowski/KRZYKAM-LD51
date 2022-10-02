@@ -10,11 +10,26 @@
   position: absolute;
   top: 50px;
   left: 25px;
-  background: url('@/images/questionmark.png');
+  background: url('https://i.postimg.cc/W3z9Lnvx/questionmark.png');
   background-size: contain;
   width: 100px;
   height: 100px;
   &:hover{
     opacity: 0.3;
+    cursor: pointer;
+  }
+}
+
+.restart{
+  position: absolute;
+  top: 175px;
+  left: 25px;
+  background: url("https://i.postimg.cc/Hk7z2x21/restart.png");
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+  &:hover{
+    opacity: 0.3;
+    cursor: pointer;
   }
 }

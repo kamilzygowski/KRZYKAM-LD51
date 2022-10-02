@@ -12,6 +12,8 @@ heading.textContent = title()
 
 const instructionButton = document.createElement('div')
 instructionButton.className = "instructionsButton"
+const restartButton = document.createElement('div')
+restartButton.className = "restart"
 
 const app = document.querySelector('#root')
-app.append(heading, canvas, instructionButton)
+app.append(heading, canvas, instructionButton, restartButton)

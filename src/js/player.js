@@ -1,5 +1,5 @@
 export class Player {
-    constructor(x, y, width, height, speed){
+    constructor(x, y, width, height, speed) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -7,13 +7,14 @@ export class Player {
         this.speed = speed;
     }
 
-    drawPlayer(ctx){
+    drawPlayer(ctx) {
         ctx.beginPath();
+        ctx.fillStyle = "darkblue"
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2)
-    ctx.fill()
+        ctx.fill()
     }
 
-    move(keyword){
+    move(keyword) {
         if (keyword === 'north') {
             this.y -= this.speed;
         }
