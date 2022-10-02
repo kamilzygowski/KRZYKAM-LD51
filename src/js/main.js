@@ -7,6 +7,7 @@ export const title =
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
+const music = [3, 3, 3, 3, 6, 7, 4, 5, 3]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 2,9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -34,8 +35,8 @@ const map = [
     [10, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13,12, 12, 12, 12, 12, 12, 12, 11,9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
 ]
 
-const player = new Player(220, 350, 26, 26, 5)
-const bar = new Bar(0,0,200,50)
+const barIntervalMultiplier = 100
+const player = new Player(220, 350, 26, 26, 32)
 canvas.width = 1403, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8;
 canvas.height = 768;
 const ctx = canvas.getContext('2d');
@@ -51,24 +52,48 @@ ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
 
 export const gameLoop = setInterval(() => {
     ctx.save()
-    ctx2.save()
-    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
-    
+   
     ctx.translate(-player.x, -canvas.height/2)
     ctx.translate(canvas.width / 2, canvas.height / 2)
     ctx.translate(-100, -100)
-    ctx2.translate(0, -100)
-    
+ 
     drawMap(map, ctx, 32);
-
     player.drawPlayer(ctx);
-    bar.drawBar(ctx2, canvas2.height);
-    bar.move(4)
-    
+
     ctx.restore()
+}, 1000 / 10)
+
+let musicIndex = -1
+let musicInterval = 500
+let currentBars = []
+
+function spawnbars() {
+    musicIndex+=1
+    musicInterval = music[musicIndex]; 
+    if(musicInterval != null){
+        musicInterval = musicInterval*barIntervalMultiplier;
+        console.log(musicInterval)
+        let barTest = new Bar(0,0,200,50)
+        currentBars.push(barTest)
+    };
+    clearInterval(spawnBarsInterval);
+    spawnBarsInterval = setInterval(spawnbars, musicInterval);
+}
+let spawnBarsInterval = setInterval(spawnbars, musicInterval)
+
+export const drawbars = setInterval(()=> {
+    ctx2.save()
+    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+    ctx2.translate(0, -100)
+
+    currentBars.forEach(bar =>{
+        bar.drawBar(ctx2, canvas2.height)
+        bar.move(4)
+    });
+   
     ctx2.restore()
 
-}, 1000 / 60)
+},  1000 / 120)
 
 
 // Moving

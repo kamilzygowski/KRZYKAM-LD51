@@ -7,9 +7,6 @@ export class Bar {
     }
 
     drawBar(ctx, limit) {
-        if (this.y > limit){
-            this.y = 0
-        } 
         ctx.beginPath();
         ctx.fillStyle = "darkred"
         ctx.rect(this.x, this.y, this.width, this.height)
@@ -18,6 +15,5 @@ export class Bar {
 
     move(speed) {
       this.y += speed
-
     }
 }
