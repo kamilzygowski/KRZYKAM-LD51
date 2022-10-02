@@ -53,59 +53,68 @@ downTopRight.src = "https://i.postimg.cc/jSWd2Vhj/d-Top-Right.png"//dTopRight
 export const downTop = new Image()
 downTop.src = "https://i.postimg.cc/4453FQdX/dTop1.png"//dTop
 
+export const hpImg = new Image();
+hpImg.src = "https://i.postimg.cc/5yFjPH6z/hp-2.png"
+
+export const playerImg = new Image();
+playerImg.src = "https://i.postimg.cc/LsWMXx8t/player.png"
+
+export const playerImg2 = new Image();
+playerImg2.src = "https://i.postimg.cc/432h3RcW/player2.png"
+
 export const drawMap = (map, ctx, SQM_SIZE) => {
    /*ctx.beginPath();
     ctx.lineTo(0,0)*/
     map.forEach((element, index) => {
         element.forEach((sqm, id) => {
             if (sqm === 0) {
-                ctx.drawImage(grassTopLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassTopLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 1) {
-                ctx.drawImage(grassTop, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassTop, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             } else if (sqm === 2) {
-                ctx.drawImage(grassTopRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassTopRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 3) {
-                ctx.drawImage(grassCenter, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassCenter, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 4) {
-                ctx.drawImage(grassBottom, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassBottom, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 5) {
-                ctx.drawImage(grassBottomLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassBottomLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 6) {
-                ctx.drawImage(grassBottomRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassBottomRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 7) {
-                ctx.drawImage(grassLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 8) {
-                ctx.drawImage(grassRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(grassRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             } else if (sqm === 9) {
-                ctx.drawImage(water, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(water, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 10) {
-                ctx.drawImage(downBottomLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downBottomLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 11) {
-                ctx.drawImage(downBottomRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downBottomRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 12) {
-                ctx.drawImage(downBottom1, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downBottom1, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 13) {
-                ctx.drawImage(downBottom2, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downBottom2, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 14) {
-                ctx.drawImage(downTopLeft, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downTopLeft, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 15) {
-                ctx.drawImage(downTopRight, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downTopRight, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             else if (sqm === 16) {
-                ctx.drawImage(downTop, SQM_SIZE * id, SQM_SIZE * index, SQM_SIZE, SQM_SIZE)
+                ctx.drawImage(downTop, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
             /*console.log(SQM_SIZE * id, SQM_SIZE * index)
             

@@ -61,8 +61,28 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.vinylRewind{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  background: url("https://i.postimg.cc/3RTnn7kt/vinyl-PNG48.png");
+  background-size: contain;
+  animation: rotate 3.5s infinite ease-in-out;
+}
+
 @keyframes bump {
   50%{
     transform: scale(1.6);
+  }
+}
+
+@keyframes rotate{
+  100%{
+    transform: rotateZ(2880deg);
   }
 }
