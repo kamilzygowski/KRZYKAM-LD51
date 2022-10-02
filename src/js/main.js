@@ -1,10 +1,12 @@
 import { drawMap } from "./map.js";
 import { Player } from "./player";
+import { Bar } from "./bar";
 
 export const title =
     () => `Ludum Dare 51 - KRZYKAM`
 
 export const canvas = document.createElement('canvas');
+export const canvas2 = document.createElement('canvas');
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 2,9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -33,20 +35,41 @@ const map = [
 ]
 
 const player = new Player(220, 350, 26, 26, 5)
+const bar = new Bar(0,0,200,50)
 canvas.width = 1403, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8;
 canvas.height = 768;
 const ctx = canvas.getContext('2d');
 ctx.fillStyle = "#121212";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+canvas2.width = 200, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8;
+canvas2.height = 700;
+const ctx2 = canvas2.getContext('2d');
+ctx2.fillStyle = "#121215";
+ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
+
+
 export const gameLoop = setInterval(() => {
     ctx.save()
+    ctx2.save()
+    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+    
     ctx.translate(-player.x, -canvas.height/2)
     ctx.translate(canvas.width / 2, canvas.height / 2)
+    ctx.translate(-100, -100)
+    ctx2.translate(0, -100)
+    
     drawMap(map, ctx, 32);
+
     player.drawPlayer(ctx);
+    bar.drawBar(ctx2, canvas2.height);
+    bar.move(4)
+    
     ctx.restore()
+    ctx2.restore()
+
 }, 1000 / 60)
+
 
 // Moving
 let mapButtons = {};
