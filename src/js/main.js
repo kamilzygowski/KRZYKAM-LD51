@@ -184,6 +184,7 @@ function drawbars() {
     ctx2.translate(0, -100)
     currentBars.forEach((bar, index) => {
         if (bar.y > 800){
+            combo = 0;
             currentBars.splice(index, 1)
             player.hp -= 1;
             return;
