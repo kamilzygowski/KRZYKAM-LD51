@@ -18,6 +18,12 @@
     <audio id="music6" src="assets/kid.mp3"></audio>
     <audio id="music7" src="assets/palace.mp3"></audio>
     <audio id="music8" src="assets/secret.mp3"></audio>
+
+    <audio id="perfect" src="assets/perfect.wav"></audio>
+    <audio id="coin" src="assets/coin.wav"></audio>
+    <audio id="hit" src="assets/hit.wav"></audio>
+    <audio id="bad" src="assets/bad.wav"></audio>
+
     <div id="root">
       <div class="notStartedGame"></div>
       <div class="startButton"></div>
@@ -26,9 +32,9 @@
         <div class="instructionsContent">
           <h1>Instructions</h1>
           <ul>
-            <li><p>You can move only following the music tempo by pressing W-A-S-D or Arrow Keys</p><img src="https://i.postimg.cc/fbs6PTqq/tut.gif"/></li>
+            <li><p>You can move only following the music tempo -> one step = one red bar. When red bar is in green field press W-A-S-D or Arrow Keys to move once! </p><img src="https://i.postimg.cc/fbs6PTqq/tut.gif"/></li>
             <li><p>Beware of wandering enemies, colliding with them causes death</p><img src="https://i.postimg.cc/wTYmTVmK/death.gif"/></li>
-            <li><p>Collect coins to get huge amount of points</p><img style="object-fit:none;" src="https://i.postimg.cc/Zn23p04N/coiny1.png"/></li>
+            <li><p>Collect coins to get huge amount of points. Don't forget to turn on the browser sound. Music changes every 10 seconds which is indicated by rotating vinyl. During vinyl animation moving is impossible</p><img style="margin-top: 25px;" src="https://i.postimg.cc/T1Jn0x1b/vinyl.png"/></li>
           </ul>
         </div>
       </div>
@@ -49,6 +55,9 @@
         <p class="s">~ SweedishSailor</p>
         <p class="s">~ MarcoDeevil</p>
       </div>
+    </div>
+    <div>
+      <p class="remember">REMEMBER TO TURN ON BROWSER SOUND</p>
     </div>
   </body>
   <script defer src="./js/runtime.bundle.js"></script>

@@ -93,6 +93,9 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = "#121212";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+let combo = 0;
+let lastMove;
+
 canvas2.width = 200;
 canvas2.height = 700;
 canvas2.style.marginLeft = "15px"
@@ -111,6 +114,9 @@ let spawnBarsInterval
 let drawBarsInterval
 let isGamePaused = false;
 
+setTimeout(()=>{
+    isGamePaused = true;
+}, 500)
 function game(){
     if(!isGamePaused){
         ctx.save()
@@ -187,6 +193,12 @@ function drawbars() {
        
     });
     ctx2.drawImage(greenBar, 15, HitBarY, 170, 50)
+    if(combo > 0){
+        ctx2.fillStyle = "#fffa65"
+    ctx2.font = "small-caps bold 26px inter";
+    ctx2.fontWeight = "bold"
+    ctx2.fillText(`Combo x ${combo}`, 30, HitBarY + 77.5);
+    }
     ctx2.restore()
 }
 
@@ -204,20 +216,32 @@ function checkLastBar() {
     //Dodac napisy ktore sie pojawiaja w gierce obok hit bara??
     let y = currentBars[0].y
     if (y < HitBarY + 10 && y >HitBarY - 10){
-        console.log("perfect")
+        if(lastMove === "good") combo++;
         Points += 100
+        document.querySelector("#perfect").volume = 0.05
+        document.querySelector("#perfect").play();
+        lastMove = "good"
     }
     else if (y <HitBarY +30 && y > HitBarY -30){
-        console.log("great")
+        if(lastMove === "good") combo++;
         Points += 75
+        document.querySelector("#perfect").volume = 0.05
+        document.querySelector("#perfect").play();
+        lastMove = "good"
     }
     else if (y < HitBarY + 50 && y >HitBarY -50){
-        console.log("good")
+        if(lastMove === "good") combo++;
         Points += 50
+        document.querySelector("#perfect").volume = 0.05
+        document.querySelector("#perfect").play();
+        lastMove = "good"
     }
     else {
-        console.log("bad")
+        combo = 0;
         player.hp -= 1;
+        document.querySelector("#bad").volume = 0.25
+        document.querySelector("#bad").play();
+        lastMove = "bad"
     }
 
     currentBars.splice(0, 1)
@@ -232,6 +256,8 @@ document.addEventListener('keydown', (e) => {
         let coinY = Math.ceil((element.x - SQM_SIZE / 2) / SQM_SIZE)
         let coinX = Math.ceil((element.y - SQM_SIZE / 2) / SQM_SIZE)
         if (coinY == playerY && coinX == playerX) {
+            document.querySelector("#coin").volume = 0.25
+        document.querySelector("#coin").play();
             Points += PointsForCoin
             coins.splice(index, 1)
         }
@@ -345,6 +371,8 @@ function playMusic() {
 }
 
 function gameOver() {
+    document.querySelector("#hit").volume = 0.65
+                document.querySelector("#hit").play();
     clearInterval(gameLoop)
     clearInterval(drawBarsInterval);
     clearInterval(spawnBarsInterval);
