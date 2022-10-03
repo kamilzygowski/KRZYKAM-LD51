@@ -8,9 +8,9 @@ export const title =
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
 const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8]
-const musicArctic = [6]
-const musicWutang = [6]
-const musicEminem = [6]
+const musicArctic = [6,6,6,6,6,6,6,6,6,6,6,6,6]
+const musicWutang = [6,6,6,6,6,6,6,6,6,6,6,6,6]
+const musicEminem = [6,6,6,6,6,6,6,6,6,6,6,6,6]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -39,6 +39,8 @@ const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 11, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
 ]
 
+let Points = 0
+const HitBarY = 700
 const drawingBarsInterval = 1000 / 80
 const startingMusicInterval = 500
 let musicBox = [musicWutang, musicMozart, musicBiggy, musicEminem, musicArctic]
@@ -70,6 +72,10 @@ export const gameLoop = setInterval(() => {
     for (let iteration = 1; iteration <= player.hp; iteration++) {
         ctx.drawImage(hpImg, player.x + canvas.width / 2 - (75 + iteration * 55), 25, 50, 50)
     }
+
+    ctx.font = "50px Georgia";
+    ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 120, 140);
+
     player.drawPlayer(ctx);
     if (player.hp <= 0) {
         gameOver();
@@ -105,12 +111,16 @@ function drawbars() {
     ctx2.translate(0, -100)
     ctx2.beginPath();
     ctx2.fillStyle = "green"
-    ctx2.rect(0, 700, 200, 50)
+    ctx2.rect(0, HitBarY, 200, 50)
     ctx2.fill()
     //console.log(currentBars)
     currentBars.forEach((bar, index) => {
+        if (bar.y > 750){
+            currentBars.splice(index, 1)
+        }
         bar.drawBar(ctx2, canvas2.height)
         bar.move(4)
+    
     });
 
     ctx2.restore()
@@ -155,27 +165,49 @@ function checkColliders(playerX, playerY) {
     return false;
 }
 
+
+function checkLastBar() {
+    if (currentBars.length == 0) {
+        return
+    }
+
+    let y = currentBars[0].y
+    if (y < HitBarY + 10 && y >HitBarY - 10){
+        console.log("perfect")
+        Points += 100
+    }
+    else if (y <HitBarY +30 && y > HitBarY -30){
+        console.log("great")
+        Points += 75
+    }
+    else if (y < HitBarY + 50 && y >HitBarY -50){
+        console.log("good")
+        Points += 50
+    }
+    else {
+        console.log("bad")
+        player.hp -= 1;
+    }
+
+    currentBars.splice(0, 1)
+}
+
 document.addEventListener('keydown', (e) => {
     let playerY = Math.ceil((player.x - SQM_SIZE / 2) / SQM_SIZE)
     let playerX = Math.ceil((player.y - SQM_SIZE / 2) / SQM_SIZE)
-    try {
-        //console.log(`playerY: ${playerY}, playerX: ${playerX}`)
-       // console.log(map[playerX][playerY])
-    }
-    catch (e) {
-       // console.log(e)
-    }
 
     if (e.key === "ArrowUp" || e.key === "w") {
         if (checkColliders(playerX - 1, playerY)) {
             return
         }
+        checkLastBar()
         player.move("north")
     }
     if (e.key === "ArrowDown" || e.key === "s") {
         if (checkColliders(playerX + 1, playerY)) {
             return
         }
+        checkLastBar()
         player.move("south")
     }
     if (e.key === "ArrowLeft" || e.key === "a") {
@@ -183,22 +215,23 @@ document.addEventListener('keydown', (e) => {
         if (checkColliders(playerX, playerY - 1)) {
             return
         }
+        checkLastBar()
         player.move("west")
     }
     if (e.key === "ArrowRight" || e.key === "d") {
         if (checkColliders(playerX, playerY + 1)) {
             return
         }
+        checkLastBar()
         player.isFacingRight = true;
         player.move("east")
     }
+
     if (player.isFacingRight) {
         player.img === playerImg ? player.img = playerImg2 : player.img = playerImg
     } else if (!player.isFacingRight) {
         player.img === playerLImg ? player.img = playerL2Img : player.img = playerLImg
     }
-
-    player.hp -= 1;
 })
 
 const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5"]
@@ -212,8 +245,6 @@ startButton.addEventListener('click', () => {
     document.querySelector("#vinyl").onended = () => {
         playMusic()
     }
-
-
     //document.querySelector("#music1").play()
     document.querySelector(".notStartedGame").style.display = "none"
     startButton.style.display = "none"
