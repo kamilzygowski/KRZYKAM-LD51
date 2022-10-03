@@ -10,8 +10,8 @@ export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
 const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4]
 const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 2.5, 3, 20, 2.5,3,2.5,15, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
-const musicWutang = [6,6,6,6,6,6,6,6,6,6,6,6,6]
-const musicEminem = [6,6,6,6,6,6,6,6,6,6,6,6,6]
+const musicWutang = [6]
+const musicEminem = [6]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -275,6 +275,9 @@ function playMusic() {
     drawBarsInterval = setInterval(drawbars, drawingBarsInterval)
 
     soundsAlreadyPlayed.push(randomSoundtrack)
+    if (soundsAlreadyPlayed.length == musicSoundtracks.length - 1){
+        soundsAlreadyPlayed = []
+    }
     console.log(randomSoundtrack)
     document.querySelector(musicSoundtracks[randomSoundtrack]).play()
     document.querySelector(musicSoundtracks[randomSoundtrack]).onended = () => {
