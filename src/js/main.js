@@ -1,18 +1,22 @@
-import { detectCollision, drawMap, enemy1, enemy2, hpImg, playerImg, playerImg2, playerL2Img, playerLImg } from "./map.js";
+import { detectCollision, drawMap, enemy1, enemy2, hpImg, playerImg, playerImg2, playerL2Img, playerLImg, coin1, coin2 } from "./map.js";
 import { Player } from "./player";
 import { Bar } from "./bar";
 import { Enemy } from "./enemy.js";
+import { Coin } from "./coin.js";
 
 export const title =
     () => `Ludum Dare 51 - KRZYKAM`
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
-const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4]
-const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 2.5, 3, 20, 2.5,3,2.5,15, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
-const musicWutang = [6]
+const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4,3]
+const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5,2.5, 2.5, 3, 20, 2.5,3,2.5,14, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
+const musicEnemy = [7.5,7.5,7.5,7.5,7.5,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,4,4,4,4,4,4,4]
 const musicEminem = [6]
+const musicKid = [2,6,10,2,8,10,2,7.5,10,5,5,5,5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4,4,4,4,3,2,2,2,2,3,4,3.5,2]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
+const musicPalace = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
+const musicSecret = [4,2, 3, 4.5,2, 3,3,  5, 3, 6, 3, 9 , 3, 4, 2, 3,3,  7, 3, 7,3, 7, 3,5,3,4,3]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ,9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -41,14 +45,25 @@ const map = [
 ]
 
 let Points = 0
+const PointsForCoin = 5000
 const HitBarY = 700
 const drawingBarsInterval = 1000 / 80
 const startingMusicInterval = 500
-let musicBox = [musicWutang, musicMozart, musicBiggy, musicEminem, musicArctic]
+let musicBox = [musicEnemy, musicMozart, musicBiggy, musicEminem, musicArctic, musicKid, musicPalace, musicSecret]
 const barIntervalMultiplier = 100
 const SQM_SIZE = 33;
+const coins = [
+    new Coin(SQM_SIZE*18, SQM_SIZE*3, coin1),
+    new Coin(SQM_SIZE*36, SQM_SIZE*18, coin1),
+    new Coin(SQM_SIZE*54, SQM_SIZE*3, coin1),
+    new Coin(SQM_SIZE*72, SQM_SIZE*16, coin1),
+    new Coin(SQM_SIZE*91, SQM_SIZE*5, coin1),    
+    new Coin(SQM_SIZE*120, SQM_SIZE*10, coin1),    
+    new Coin(SQM_SIZE*145, SQM_SIZE*19, coin1),    
+
+]
 const enemies = [
-    new Enemy(SQM_SIZE*32, SQM_SIZE*11, enemy1),
+    new Enemy(SQM_SIZE*34, SQM_SIZE*11, enemy1),
     new Enemy(SQM_SIZE*47, SQM_SIZE*14, enemy1),
     new Enemy(SQM_SIZE*27, SQM_SIZE* 5, enemy1),
     new Enemy(SQM_SIZE*54, SQM_SIZE* 6, enemy1),
@@ -112,6 +127,11 @@ function game(){
             //gameOver();
             player.deathReason = "Watch the rythm"
         }
+
+        coins.forEach((element, index) =>{
+            element.drawCoin(ctx)
+        } )
+
         enemies.forEach((element, index) => {
             element.drawEnemy(ctx)
             if(detectCollision(element, player)){
@@ -122,7 +142,7 @@ function game(){
         ctx.fillStyle = "#fffa65"
         ctx.font = "50px Georgia";
         ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 555, 60);
-        ctx.restore()
+        ctx.restore()``
     }
 }
 let gameLoop = setInterval(game, 1000 / 10)
@@ -207,6 +227,16 @@ document.addEventListener('keydown', (e) => {
     if(isGamePaused) return
     let playerY = Math.ceil((player.x - SQM_SIZE / 2) / SQM_SIZE)
     let playerX = Math.ceil((player.y - SQM_SIZE / 2) / SQM_SIZE)
+
+    coins.forEach((element, index) => {
+        let coinY = Math.ceil((element.x - SQM_SIZE / 2) / SQM_SIZE)
+        let coinX = Math.ceil((element.y - SQM_SIZE / 2) / SQM_SIZE)
+        if (coinY == playerY && coinX == playerX) {
+            Points += PointsForCoin
+            coins.splice(index, 1)
+        }
+    })
+
     if (e.key === "ArrowUp" || e.key === "w") {
         checkLastBar()
         if (checkColliders(playerX - 1, playerY)) {
@@ -253,9 +283,13 @@ document.addEventListener('keydown', (e) => {
         element.moveEnemy()
     })
 
+    coins.forEach((element, index) => {
+        element.img === coin1 ? element.img = coin2 : element.img = coin1;
+    })
+
 })
 
-const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5"]
+const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5", "#music6", "#music7", "#music8"]
 const vinylRewind = document.querySelector("#vinyl");
 let soundsAlreadyPlayed = [];
 // 1 - Wutang ; 2 - Mozart ; 3 - Biggy ; 4 - Eminem ; 5 - Arctic
@@ -263,6 +297,7 @@ const startButton = document.querySelector(".startButton")
 startButton.addEventListener('click', () => {
     document.querySelector(".vinylRewind").style.display = "block";
     isGamePaused = true;
+    vinylRewind.volume = 0.4
     vinylRewind.play()
     document.querySelector("#vinyl").onended = () => {
         playMusic()
@@ -278,11 +313,10 @@ let musicFinished = false
 function playMusic() {
     document.querySelector(".vinylRewind").style.display = "none";
     randomSoundtrack = Math.floor(Math.random() * (musicSoundtracks.length - 1))
-
-    if (soundsAlreadyPlayed.includes(randomSoundtrack)) {
+   if (soundsAlreadyPlayed.includes(randomSoundtrack)) {
         playMusic();
-        return;
-    }
+       return;
+   }
     musicBoxIndex = randomSoundtrack
     musicFinished = false
     clearInterval(drawBarsInterval);
@@ -295,11 +329,13 @@ function playMusic() {
         soundsAlreadyPlayed = []
     }
     console.log(randomSoundtrack)
+    document.querySelector(musicSoundtracks[randomSoundtrack]).volume = 0.2 
     document.querySelector(musicSoundtracks[randomSoundtrack]).play()
     document.querySelector(musicSoundtracks[randomSoundtrack]).onended = () => {
         isGamePaused = true;
         document.querySelector(".vinylRewind").style.display = "block";
         musicFinished = true
+        vinylRewind.volume = 0.6
         vinylRewind.play()
         vinylRewind.onended = () => {
             playMusic()

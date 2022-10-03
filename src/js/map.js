@@ -98,6 +98,12 @@ redBar.src = "https://i.postimg.cc/SsGH479B/redBar.png";
 export const meta = new Image()
 meta.src = "https://i.postimg.cc/59G4HbT6/meta.png"
 
+export const coin1 = new Image();
+coin1.src = "https://i.postimg.cc/Zn23p04N/coiny1.png"
+
+export const coin2 = new Image();
+coin2.src = "https://i.postimg.cc/rpH4RQcm/coiny2.png"
+
 export const detectCollision = (object1, object2) => {
     let dx = object1.x - object2.x;
     let dy = object1.y - object2.y;
