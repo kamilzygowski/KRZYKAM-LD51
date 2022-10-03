@@ -112,7 +112,7 @@ export const gameLoop = setInterval(() => {
         ctx.font = "50px Georgia";
         ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 120, 140);
         ctx.restore()
-    //}  
+    }  
 }, 1000 / 10)
 
 let musicIndex = -1
