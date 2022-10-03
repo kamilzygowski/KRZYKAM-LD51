@@ -8,8 +8,8 @@ export const title =
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
-const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8]
-const musicArctic = [6]
+const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4]
+const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 2.5, 3, 20, 2.5,3,2.5,15, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
 const musicWutang = [6]
 const musicEminem = [6]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
@@ -40,6 +40,8 @@ const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 13, 12, 12, 12, 12, 12, 12, 12,12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12,12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12,12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12,12, 13, 12, 12, 13, 12, 12, 12, 12, 13, 12, 12, 11, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
 ]
 
+let Points = 0
+const HitBarY = 700
 const drawingBarsInterval = 1000 / 80
 const startingMusicInterval = 500
 let musicBox = [musicWutang, musicMozart, musicBiggy, musicEminem, musicArctic]
@@ -106,10 +108,10 @@ export const gameLoop = setInterval(() => {
                 gameOver();
             }
         })
+
+        ctx.font = "50px Georgia";
+        ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 120, 140);
         ctx.restore()
-    
-        //console.log(Math.floor((player.x - SQM_SIZE/2)/SQM_SIZE))
-        //console.log(Math.floor((player.y - SQM_SIZE/2)/SQM_SIZE))
     }  
 }, 1000 / 10)
 
@@ -119,20 +121,19 @@ let currentBars = []
 let musicBoxIndex = 0
 
 function spawnbars() {
-    if(!isGamePaused){
-        musicIndex += 1
-        musicInterval = musicBox[musicBoxIndex][musicIndex];
-        if (musicInterval != null && !musicFinished) {
-            musicInterval = musicInterval * barIntervalMultiplier;
-            currentBars.push(new Bar(0, 0, 200, 50))
-        } else if (musicFinished) {
-            musicBoxIndex = randomSoundtrack
-            musicIndex = -1
-            musicInterval = startingMusicInterval
-        }
-        clearInterval(spawnBarsInterval);
-        spawnBarsInterval = setInterval(spawnbars, musicInterval);
+    musicIndex += 1
+    musicInterval = musicBox[musicBoxIndex][musicIndex];
+    if (musicInterval != null && !musicFinished) {
+        musicInterval = musicInterval * barIntervalMultiplier;
+        currentBars.push(new Bar(0, 0, 200, 50))
+    } else if (musicFinished) {
+        musicBoxIndex = randomSoundtrack
+        musicIndex = -1
+        musicInterval = startingMusicInterval
+        currentBars = []
     }
+    clearInterval(spawnBarsInterval);
+    spawnBarsInterval = setInterval(spawnbars, musicInterval);
 }
 
 function drawbars() {
@@ -141,16 +142,21 @@ function drawbars() {
     ctx2.translate(0, -100)
     ctx2.beginPath();
     ctx2.fillStyle = "green"
-    ctx2.rect(0, 700, 200, 50)
+    ctx2.rect(0, HitBarY, 200, 50)
     ctx2.fill()
-    //console.log(currentBars)
     currentBars.forEach((bar, index) => {
+        if (bar.y > 800){
+            currentBars.splice(index, 1)
+            player.hp -= 1;
+            return;
+        }
         bar.drawBar(ctx2, canvas2.height)
         bar.move(4)
+       
     });
-
     ctx2.restore()
 }
+
 function checkColliders(playerX, playerY) {
     if (map[playerX][playerY] === 9 || map[playerX][playerY] === 15 || map[playerX][playerY] === 14 || map[playerX][playerY] === 16|| map[playerX][playerY] === 96|| map[playerX][playerY] === 97|| map[playerX][playerY] === 98|| map[playerX][playerY] === 99 || map[playerX][playerY] === 100 || map[playerX][playerY] === 101 || map[playerX][playerY] === 102) {
         return true;
@@ -158,43 +164,71 @@ function checkColliders(playerX, playerY) {
     return false;
 }
 
+function checkLastBar() {
+    if (currentBars.length == 0) {
+        return
+    }
+    //Dodac napisy ktore sie pojawiaja w gierce obok hit bara??
+    let y = currentBars[0].y
+    if (y < HitBarY + 10 && y >HitBarY - 10){
+        console.log("perfect")
+        Points += 100
+    }
+    else if (y <HitBarY +30 && y > HitBarY -30){
+        console.log("great")
+        Points += 75
+    }
+    else if (y < HitBarY + 50 && y >HitBarY -50){
+        console.log("good")
+        Points += 50
+    }
+    else {
+        console.log("bad")
+        player.hp -= 1;
+    }
+
+    currentBars.splice(0, 1)
+}
+
 document.addEventListener('keydown', (e) => {
     if(isGamePaused) return
     let playerY = Math.ceil((player.x - SQM_SIZE / 2) / SQM_SIZE)
     let playerX = Math.ceil((player.y - SQM_SIZE / 2) / SQM_SIZE)
-    try {
-        //console.log(`playerY: ${playerY}, playerX: ${playerX}`)
-       // console.log(map[playerX][playerY])
-    }
-    catch (e) {
-       // console.log(e)
-    }
     if (e.key === "ArrowUp" || e.key === "w") {
+        checkLastBar()
         if (checkColliders(playerX - 1, playerY)) {
             return
         }
+      
         player.move("north")
     }
     if (e.key === "ArrowDown" || e.key === "s") {
+        checkLastBar()
         if (checkColliders(playerX + 1, playerY)) {
             return
         }
+        
         player.move("south")
     }
     if (e.key === "ArrowLeft" || e.key === "a") {
         player.isFacingRight = false;
+        checkLastBar()
         if (checkColliders(playerX, playerY - 1)) {
             return
         }
+    
         player.move("west")
     }
     if (e.key === "ArrowRight" || e.key === "d") {
+        checkLastBar()
         if (checkColliders(playerX, playerY + 1)) {
             return
         }
+       
         player.isFacingRight = true;
         player.move("east")
     }
+
     if (player.isFacingRight) {
         player.img === playerImg ? player.img = playerImg2 : player.img = playerImg
     } else if (!player.isFacingRight) {
@@ -205,7 +239,6 @@ document.addEventListener('keydown', (e) => {
         element.moveEnemy()
     })
 
-    player.hp -= 1;
 })
 
 const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5"]
@@ -221,8 +254,6 @@ startButton.addEventListener('click', () => {
         playMusic()
         isGamePaused = false;
     }
-
-
     //document.querySelector("#music1").play()
     document.querySelector(".notStartedGame").style.display = "none"
     startButton.style.display = "none"
@@ -246,6 +277,9 @@ function playMusic() {
     drawBarsInterval = setInterval(drawbars, drawingBarsInterval)
 
     soundsAlreadyPlayed.push(randomSoundtrack)
+    if (soundsAlreadyPlayed.length == musicSoundtracks.length - 1){
+        soundsAlreadyPlayed = []
+    }
     console.log(randomSoundtrack)
     document.querySelector(musicSoundtracks[randomSoundtrack]).play()
     document.querySelector(musicSoundtracks[randomSoundtrack]).onended = () => {
