@@ -8,6 +8,7 @@ const quesitonMark = new Image();
 quesitonMark.src = _quesitonMark;
 
 const heading = document.createElement('h1')
+heading.className = "title"
 heading.textContent = title()
 
 const instructionButton = document.createElement('div')

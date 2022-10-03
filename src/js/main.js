@@ -4,18 +4,20 @@ import { Bar } from "./bar";
 import { Enemy } from "./enemy.js";
 import { Coin } from "./coin.js";
 
-export const title =
+export let title =
     () => `Ludum Dare 51 - KRZYKAM`
+        
+    
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
 const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4,3]
 const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5,2.5, 2.5, 3, 20, 2.5,3,2.5,14, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
 const musicEnemy = [7.5,7.5,7.5,7.5,7.5,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,4,4,4,4,4,4,4]
-const musicEminem = [6]
+const musicEminem = [4.5,4.5,4.5,4.5,4,5,3.5,2.5,2.5,2.5,4.5,4.5,4.5, 6, 4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5, 5, 5,4,4.5,4,4.5,4,4.5]
 const musicKid = [2,6,10,2,8,10,2,7.5,10,5,5,5,5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4.5,4,4,4,4,3,2,2,2,2,3,4,3.5,2]
-const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
-const musicPalace = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
+const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 6.5, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2, 6.2]
+const musicPalace = [2.5,6 ,2,2,6,2.5, 6, 2,2,6,2.5, 6.2, 2,2,10,2.5,2.5,2.5,3,2,3,2, 2.5,6 ,2,2,6,2.5, 6, 2,2,6,2.5, 6.2, 2,2,4, 2.5,2.5,2.5,2.5, 2.5,2.5,2.5,2.5, 2.5]
 const musicSecret = [4,2, 3, 4.5,2, 3,3,  5, 3, 6, 3, 9 , 3, 4, 2, 3,3,  7, 3, 7,3, 7, 3,5,3,4,3]
 const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ,9, 9, 9, 9],
@@ -130,8 +132,8 @@ function game(){
         }
         player.drawPlayer(ctx);
         if (player.hp <= 0) {
-            //gameOver();
             player.deathReason = "Watch the rythm"
+            gameOver();
         }
 
         coins.forEach((element, index) =>{
@@ -148,7 +150,7 @@ function game(){
         ctx.fillStyle = "#fffa65"
         ctx.font = "50px Georgia";
         ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 555, 60);
-        ctx.restore()``
+        ctx.restore()
     }
 }
 let gameLoop = setInterval(game, 1000 / 10)
@@ -317,6 +319,9 @@ document.addEventListener('keydown', (e) => {
 })
 
 const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5", "#music6", "#music7", "#music8"]
+const musicNames = ["Imagine Dragons - Enemy", "Eine Kleine Nachtmusik - Mozart", "Hypnotize - Biggie", "Forgot about dre - Eminem", "Do I Wanna Know - Arctic Monkeys", 
+"The Offspring - You're Gonna Go Far, Kid", "Caravan Palace - Lone Digger", "Omori OST - By Your Side."]
+
 const vinylRewind = document.querySelector("#vinyl");
 let soundsAlreadyPlayed = [];
 // 1 - Wutang ; 2 - Mozart ; 3 - Biggy ; 4 - Eminem ; 5 - Arctic
@@ -344,6 +349,8 @@ function playMusic() {
         playMusic();
        return;
    }
+
+    document.querySelector(".title").textContent = `Ludum Dare 51 - KRZYKAM | Currently playing: ${musicNames[randomSoundtrack]}`  
     musicBoxIndex = randomSoundtrack
     musicFinished = false
     clearInterval(drawBarsInterval);
