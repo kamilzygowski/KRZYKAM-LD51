@@ -343,6 +343,8 @@ startButton.addEventListener('click', () => {
 let randomSoundtrack
 let musicFinished = false
 function playMusic() {
+    if (gameEnded)
+        return
     document.querySelector(".vinylRewind").style.display = "none";
     randomSoundtrack = Math.floor(Math.random() * (musicSoundtracks.length - 1))
    if (soundsAlreadyPlayed.includes(randomSoundtrack)) {
@@ -369,6 +371,8 @@ function playMusic() {
         isGamePaused = true;
         document.querySelector(".vinylRewind").style.display = "block";
         musicFinished = true
+        if (gameEnded)
+            return
         vinylRewind.volume = 0.6
         vinylRewind.play()
         vinylRewind.onended = () => {
@@ -377,8 +381,9 @@ function playMusic() {
         }
     }
 }
-
+let gameEnded = false
 function gameOver() {
+    gameEnded = true
     document.querySelector("#hit").volume = 0.65
                 document.querySelector("#hit").play();
     clearInterval(gameLoop)
