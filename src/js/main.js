@@ -132,6 +132,8 @@ function spawnbars() {
         musicInterval = startingMusicInterval
         currentBars = []
     }
+    clearInterval(spawnBarsInterval);
+    spawnBarsInterval = setInterval(spawnbars, musicInterval);
 }
 
 function drawbars() {
