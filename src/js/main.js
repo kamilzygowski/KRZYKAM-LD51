@@ -7,8 +7,8 @@ export const title =
 
 export const canvas = document.createElement('canvas');
 export const canvas2 = document.createElement('canvas');
-const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8]
-const musicArctic = [6,6,6,6,6,6,6,6,6,6,6,6,6]
+const musicMozart = [6, 3, 5, 2, 2, 2, 2, 2, 9, 7, 3, 6, 2, 2, 2, 2, 2, 8, 5, 8, 3, 3, 2.1, 3, 6, 3, 3, 2.1, 2.1, 6, 3, 3, 2.1, 3, 7, 4, 4, 4, 4, 4, 4, 4, 4]
+const musicArctic = [6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 2.5, 3, 20, 2.5,3,2.5,15, 2.5, 12, 2.5,3,13, 2.5,3.2,3, 3]
 const musicWutang = [6,6,6,6,6,6,6,6,6,6,6,6,6]
 const musicEminem = [6,6,6,6,6,6,6,6,6,6,6,6,6]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
@@ -100,6 +100,7 @@ function spawnbars() {
         musicBoxIndex = randomSoundtrack
         musicIndex = -1
         musicInterval = startingMusicInterval
+        currentBars = []
     }
     clearInterval(spawnBarsInterval);
     spawnBarsInterval = setInterval(spawnbars, musicInterval);
@@ -113,19 +114,18 @@ function drawbars() {
     ctx2.fillStyle = "green"
     ctx2.rect(0, HitBarY, 200, 50)
     ctx2.fill()
-    //console.log(currentBars)
     currentBars.forEach((bar, index) => {
-        if (bar.y > 750){
+        if (bar.y > 800){
             currentBars.splice(index, 1)
+            player.hp -= 1;
+            return;
         }
         bar.drawBar(ctx2, canvas2.height)
         bar.move(4)
-    
+       
     });
-
     ctx2.restore()
 }
-
 
 // Old moving
 /*let mapButtons = {};
@@ -171,6 +171,7 @@ function checkLastBar() {
         return
     }
 
+    //Dodac napisy ktore sie pojawiaja w gierce obok hit bara??
     let y = currentBars[0].y
     if (y < HitBarY + 10 && y >HitBarY - 10){
         console.log("perfect")
@@ -197,32 +198,36 @@ document.addEventListener('keydown', (e) => {
     let playerX = Math.ceil((player.y - SQM_SIZE / 2) / SQM_SIZE)
 
     if (e.key === "ArrowUp" || e.key === "w") {
+        checkLastBar()
         if (checkColliders(playerX - 1, playerY)) {
             return
         }
-        checkLastBar()
+      
         player.move("north")
     }
     if (e.key === "ArrowDown" || e.key === "s") {
+        checkLastBar()
         if (checkColliders(playerX + 1, playerY)) {
             return
         }
-        checkLastBar()
+        
         player.move("south")
     }
     if (e.key === "ArrowLeft" || e.key === "a") {
         player.isFacingRight = false;
+        checkLastBar()
         if (checkColliders(playerX, playerY - 1)) {
             return
         }
-        checkLastBar()
+    
         player.move("west")
     }
     if (e.key === "ArrowRight" || e.key === "d") {
+        checkLastBar()
         if (checkColliders(playerX, playerY + 1)) {
             return
         }
-        checkLastBar()
+       
         player.isFacingRight = true;
         player.move("east")
     }
