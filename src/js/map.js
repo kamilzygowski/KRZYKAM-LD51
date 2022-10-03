@@ -68,6 +68,28 @@ playerLImg.src = "https://i.postimg.cc/xdpBLnNB/playerL.png"
 export const playerL2Img = new Image();
 playerL2Img.src = "https://i.postimg.cc/T25vqL90/player2L.png"
 
+export const stone1 = new Image();
+stone1.src = "https://i.postimg.cc/W1qxPQDv/ston2.png"
+export const stone2 = new Image();
+stone2.src = "https://i.postimg.cc/V6mhnvKf/stone1.png"
+export const stone3 = new Image();
+stone3.src = "https://i.postimg.cc/YScZ2bgm/stone3.png"
+export const stone4 = new Image();
+stone4.src = "https://i.postimg.cc/pdD7mzYc/stone4.png"
+
+export const rstone1 = new Image()
+rstone1.src = "https://i.postimg.cc/jj7WPdLF/rston1.png"
+export const rstone2 = new Image()
+rstone2.src = "https://i.postimg.cc/T3SLKWYb/rstone2.png"
+export const rstone3 = new Image()
+rstone3.src = "https://i.postimg.cc/6pT46hww/rstone3.png"
+
+export const enemy1 = new Image();
+enemy1.src = "https://i.postimg.cc/rmdv8sFQ/enemy1.png"
+
+export const enemy2 = new Image();
+enemy2.src = "https://i.postimg.cc/VLzmFsHV/enemy2.png"
+
 export const detectCollision = (object1, object2) => {
     let dx = object1.x - object2.x;
     let dy = object1.y - object2.y;
@@ -132,6 +154,26 @@ export const drawMap = (map, ctx, SQM_SIZE, player) => {
             }
             else if (sqm === 16) {
                 ctx.drawImage(downTop, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }else if (sqm === 96){
+                ctx.drawImage(stone1, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 97){
+                ctx.drawImage(stone2, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 98){
+                ctx.drawImage(stone3, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 99){
+                ctx.drawImage(stone4, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 100){
+                ctx.drawImage(rstone1, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 101){
+                ctx.drawImage(rstone2, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 102){
+                ctx.drawImage(rstone3, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
             }
         })
     })

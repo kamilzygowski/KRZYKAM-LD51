@@ -10,7 +10,9 @@ export class Player {
     }
 
     drawPlayer(ctx) {
-        ctx.drawImage(this.img, this.x + 6, this.y - 6, this.width + 8 , this.height + 8 )
+        ctx.fillStyle = "#F8EFBA"
+        ctx.fillRect(this.x, this.y, 32, 32)
+        ctx.drawImage(this.img, this.x, this.y - 6, this.width + 8 , this.height + 8 )
     }
 
     move(keyword) {
