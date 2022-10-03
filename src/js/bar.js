@@ -1,3 +1,5 @@
+import { redBar } from "./map";
+
 export class Bar {
     constructor(x, y, width, height) {
         this.x = x;
@@ -11,6 +13,7 @@ export class Bar {
         ctx.fillStyle = "darkred"
         ctx.rect(this.x, this.y, this.width, this.height)
         ctx.fill()
+        ctx.drawImage(redBar, this.x, this.y, this.width, this.height)
     }
 
     move(speed) {

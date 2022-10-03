@@ -7,10 +7,12 @@ export class Player {
         this.speed = speed;
         this.hp = hp;
         this.img = img;
+        this.underColor = "#F8EFBA"
+        this.deathReason = "your mistake"
     }
 
     drawPlayer(ctx) {
-        ctx.fillStyle = "#F8EFBA"
+        ctx.fillStyle = this.underColor
         ctx.fillRect(this.x, this.y, 32, 32)
         ctx.drawImage(this.img, this.x, this.y - 6, this.width + 8 , this.height + 8 )
     }

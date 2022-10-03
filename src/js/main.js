@@ -14,7 +14,7 @@ const musicWutang = [6]
 const musicEminem = [6]
 const musicBiggy = [6.5, 6.5, 6.5, 6.2, 6.5, 8]
 const map = [
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ,9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3,99, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 99, 3, 3, 3,3, 3, 3,3, 101, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 100,3, 3, 3,3, 3, 3,101, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 101,3, 3, 3,3, 3, 3,3, 3, 3,101, 3, 3,3, 102, 3,3, 3, 3,3, 3, 3,3, 3, 3,96, 3, 3,3, 3, 3, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -23,9 +23,9 @@ const map = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3,96, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 101, 3,3, 3, 102,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 99, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,99, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 97,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 100, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 97, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,96, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 99,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 102, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 99, 3,3, 101, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 98, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 101,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 98,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,99, 3, 3,3, 3, 3,3, 3, 3,3, 102, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 102, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 99, 3,3, 101, 3,3, 3, 3,3, 3, 3,999, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 98, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 101,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 98,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,999, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 97, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,99, 3, 3,3, 3, 3,3, 3, 3,3, 102, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,999, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 100, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,3, 102, 3,3, 3, 3,99, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 100,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 3, 3, 101, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 99, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3,99, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 100,3, 3, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 3,3, 96, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 7, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 98, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 100, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 96, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 101, 3,3, 3, 3,102, 3, 3,3, 3, 3,3, 3, 3,3, 3, 102,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,3, 3, 3,8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -72,7 +72,7 @@ const enemies = [
     new Enemy(SQM_SIZE*126, SQM_SIZE* 14, enemy1)
 ]
 const player = new Player(792, 363, 28, 28, SQM_SIZE, 3, playerImg)
-canvas.width = 1403;
+canvas.width = 1205;
 canvas.height = 768 + 24;
 const ctx = canvas.getContext('2d');
 ctx.fillStyle = "#121212";
@@ -80,20 +80,29 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 canvas2.width = 200;
 canvas2.height = 700;
+canvas2.style.marginLeft = "15px"
+canvas2.style.marginBottom = "45px"
 const ctx2 = canvas2.getContext('2d');
 ctx2.fillStyle = "#121215";
 ctx2.fillRect(-300, 0, canvas2.width, canvas2.height);
+const BarsBackground = new Image();
+BarsBackground.src = "https://i.postimg.cc/8kvg1PTX/bar.png"
+const greenBar = new Image();
+greenBar.src = "https://i.postimg.cc/sDYgn48c/greenbar.png"
+ctx2.drawImage(BarsBackground, 0, 0, 200, 700)
+ctx2.drawImage(greenBar, 15, 700, 170, 50)
 
 let spawnBarsInterval
 let drawBarsInterval
 let isGamePaused = false;
-export const gameLoop = setInterval(() => {
+
+function game(){
     if(!isGamePaused){
         ctx.save()
 
         ctx.translate(-player.x, -canvas.height / 2)
         ctx.translate(canvas.width / 2, canvas.height / 2)
-        ctx.clearRect(0, 0, canvas.width * 3, canvas.height)
+        ctx.clearRect(0, 0, canvas.width * 6, canvas.height)
         drawMap(map, ctx, SQM_SIZE - 1, player);
         for (let iteration = 1; iteration <= player.hp; iteration++) {
             ctx.drawImage(hpImg, player.x + canvas.width / 2 - (75 + iteration * 55), 25, 50, 50)
@@ -101,19 +110,22 @@ export const gameLoop = setInterval(() => {
         player.drawPlayer(ctx);
         if (player.hp <= 0) {
             //gameOver();
+            player.deathReason = "Watch the rythm"
         }
         enemies.forEach((element, index) => {
             element.drawEnemy(ctx)
             if(detectCollision(element, player)){
+                player.deathReason = "Killed by Evil Doggy"
                 gameOver();
             }
         })
-
+        ctx.fillStyle = "#fffa65"
         ctx.font = "50px Georgia";
-        ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 120, 140);
+        ctx.fillText(`${Points}`, player.x + canvas.width / 2 - 555, 60);
         ctx.restore()
-    }  
-}, 1000 / 10)
+    }
+}
+let gameLoop = setInterval(game, 1000 / 10)
 
 let musicIndex = -1
 let musicInterval = startingMusicInterval
@@ -121,11 +133,12 @@ let currentBars = []
 let musicBoxIndex = 0
 
 function spawnbars() {
+    ctx2.save();
     musicIndex += 1
     musicInterval = musicBox[musicBoxIndex][musicIndex];
     if (musicInterval != null && !musicFinished) {
         musicInterval = musicInterval * barIntervalMultiplier;
-        currentBars.push(new Bar(0, 0, 200, 50))
+        currentBars.push(new Bar(15, 0, 170, 50))
     } else if (musicFinished) {
         musicBoxIndex = randomSoundtrack
         musicIndex = -1
@@ -134,16 +147,15 @@ function spawnbars() {
     }
     clearInterval(spawnBarsInterval);
     spawnBarsInterval = setInterval(spawnbars, musicInterval);
+    ctx2.restore()
 }
 
 function drawbars() {
     ctx2.save()
-    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+    ctx2.fillStyle = "#121212"
+    ctx2.fillRect(0,0,canvas2.width,canvas2.height)
+    ctx2.drawImage(BarsBackground, 0, 0, 200, 700)
     ctx2.translate(0, -100)
-    ctx2.beginPath();
-    ctx2.fillStyle = "green"
-    ctx2.rect(0, HitBarY, 200, 50)
-    ctx2.fill()
     currentBars.forEach((bar, index) => {
         if (bar.y > 800){
             currentBars.splice(index, 1)
@@ -154,6 +166,7 @@ function drawbars() {
         bar.move(4)
        
     });
+    ctx2.drawImage(greenBar, 15, HitBarY, 170, 50)
     ctx2.restore()
 }
 
@@ -234,6 +247,7 @@ document.addEventListener('keydown', (e) => {
     } else if (!player.isFacingRight) {
         player.img === playerLImg ? player.img = playerL2Img : player.img = playerLImg
     }
+    player.underColor === "#F8EFBA" ? player.underColor = "#5f27cd" : player.underColor = "#F8EFBA"
     enemies.forEach((element, index) => {
         element.img === enemy1 ? element.img = enemy2 : element.img = enemy1;
         element.moveEnemy()
@@ -243,7 +257,7 @@ document.addEventListener('keydown', (e) => {
 
 const musicSoundtracks = ["#music1", "#music2", "#music3", "#music4", "#music5"]
 const vinylRewind = document.querySelector("#vinyl");
-const soundsAlreadyPlayed = [];
+let soundsAlreadyPlayed = [];
 // 1 - Wutang ; 2 - Mozart ; 3 - Biggy ; 4 - Eminem ; 5 - Arctic
 const startButton = document.querySelector(".startButton")
 startButton.addEventListener('click', () => {
@@ -295,6 +309,26 @@ function playMusic() {
 }
 
 function gameOver() {
+    clearInterval(gameLoop)
+    clearInterval(drawBarsInterval);
+    clearInterval(spawnBarsInterval);
+    document.querySelector('.restart').classList.add("restartAnim")
+    document.querySelector('.gameOver').style.display = "block"
+    document.querySelector('.gameOverScoreSpan').textContent = `${Points}`
+    document.querySelector('.gameOverDeathCauseSpan').textContent = `${player.deathReason}`
     //clearInterval(gameLoop)
     console.log("Game Over Screen")
+}
+
+export function startGame(){
+    gameLoop = setInterval(game, 1000 / 10)
+    spawnBarsInterval = setInterval(spawnbars, musicInterval)
+    drawBarsInterval = setInterval(drawbars, drawingBarsInterval)
+}
+
+export function winTheGame(){
+    clearInterval(gameLoop)
+    clearInterval(drawBarsInterval);
+    clearInterval(spawnBarsInterval);
+    document.querySelector('.wonScreen').style.display = "block";
 }

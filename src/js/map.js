@@ -17,6 +17,8 @@ import dTopLeft from '@/images/dTopLeft.png'
 import dTopRight from '@/images/dTopRight.png'
 import dTop from '@/images/dTop1.png'*/
 
+import { winTheGame } from "./main";
+
 export const grassTop = new Image();
 grassTop.src = "https://i.postimg.cc/dQ4q9QH1/top.png"//gTop;
 export const grassTopLeft = new Image();
@@ -89,6 +91,12 @@ enemy1.src = "https://i.postimg.cc/rmdv8sFQ/enemy1.png"
 
 export const enemy2 = new Image();
 enemy2.src = "https://i.postimg.cc/VLzmFsHV/enemy2.png"
+
+export const redBar = new Image()
+redBar.src = "https://i.postimg.cc/SsGH479B/redBar.png";
+
+export const meta = new Image()
+meta.src = "https://i.postimg.cc/59G4HbT6/meta.png"
 
 export const detectCollision = (object1, object2) => {
     let dx = object1.x - object2.x;
@@ -174,6 +182,12 @@ export const drawMap = (map, ctx, SQM_SIZE, player) => {
             }
             else if (sqm === 102){
                 ctx.drawImage(rstone3, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+            }
+            else if (sqm === 999){
+                ctx.drawImage(meta, (SQM_SIZE + 1) * id, (SQM_SIZE + 1) * index, SQM_SIZE, SQM_SIZE)
+                if(detectCollision(player,{x:(SQM_SIZE + 1) * id,y: (SQM_SIZE + 1) * index, width: SQM_SIZE, height: SQM_SIZE})){
+                    winTheGame()
+                }
             }
         })
     })
